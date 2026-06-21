@@ -169,16 +169,39 @@ export default function AtmosphereControls() {
       </AnimatePresence>
 
       {/* Floating launcher trigger */}
-      <motion.button
-        id="atmosphere-toggle"
-        onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.06 }}
-        whileTap={{ scale: 0.94 }}
-        className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[var(--ink)] hover:bg-[var(--accent)] text-[var(--canvas)] hover:text-[var(--ink)] flex items-center justify-center shadow-[0_12px_40px_rgba(var(--shadow),0.25)] hover:shadow-[0_16px_48px_rgba(var(--shadow),0.35)] border border-[var(--line)]/50 transition-colors duration-300 ease-out cursor-pointer group"
-        aria-label="Atmosphere Panel"
-      >
-        <Sliders className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:rotate-12" />
-      </motion.button>
+      <div className="flex items-center gap-3">
+        <motion.button
+          id="atmosphere-toggle"
+          onClick={() => setIsOpen(!isOpen)}
+          whileHover={{ scale: 1.06 }}
+          whileTap={{ scale: 0.94 }}
+          className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[var(--ink)] hover:bg-[var(--accent)] text-[var(--canvas)] hover:text-[var(--ink)] flex items-center justify-center shadow-[0_12px_40px_rgba(var(--shadow),0.25)] hover:shadow-[0_16px_48px_rgba(var(--shadow),0.35)] border border-[var(--line)]/50 transition-colors duration-300 ease-out cursor-pointer group"
+          aria-label="Atmosphere Panel"
+        >
+          <Sliders className="w-5 h-5 md:w-6 md:h-6 transition-transform duration-300 group-hover:rotate-12" />
+        </motion.button>
+
+        {/* Sleek Onboarding / Discoverability Pill */}
+        <AnimatePresence>
+          {!isOpen && (
+            <motion.div
+              initial={{ opacity: 0, x: -10, scale: 0.93 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -10, scale: 0.93 }}
+              transition={{ delay: 0.8, duration: 0.4 }}
+              className="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[var(--surface)] text-[var(--ink)] border border-[var(--line)] shadow-lg shadow-neutral-950/[0.03] pointer-events-none select-none"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--accent)] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--accent)]"></span>
+              </span>
+              <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-[var(--ink-soft)] font-medium">
+                Atmosphere &amp; Physics
+              </span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
