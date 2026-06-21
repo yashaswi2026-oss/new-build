@@ -208,7 +208,7 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleChange}
                       rows={4}
-                      placeholder="e.g. We want to design a premium, distraction-free branding architecture for our newly launched new build..."
+                      placeholder="e.g. We want to design a premium, distraction-free branding architecture for our newly launched studio..."
                       disabled={isSubmitting}
                       className="w-full px-4 py-3 bg-[#FAF6F0]/20 border border-neutral-200/80 text-neutral-900 rounded-lg text-sm transition-all focus:outline-none focus:border-[var(--accent)] focus:ring-4 focus:ring-[var(--accent-soft)] placeholder-neutral-400 font-sans resize-y"
                     />
